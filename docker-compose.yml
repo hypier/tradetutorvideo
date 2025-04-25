@@ -29,6 +29,21 @@ services:
       - MYSQL_DATABASE=your_videos_channel_db
       - MYSQL_USER=db_user
       - MYSQL_PASSWORD=db_password
+      
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/ssl:/etc/nginx/ssl
+    depends_on:
+      - app
+    networks:
+      default:
+        aliases:
+          - admin.tradetutorvideo.net
 
 volumes:
   db_data: 
