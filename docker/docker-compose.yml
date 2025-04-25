@@ -23,6 +23,8 @@ services:
     volumes:
       - ./mysql_data:/var/lib/mysql
       - ./db:/docker-entrypoint-initdb.d
+    ports:
+      - "13306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: your_videos_channel_db
