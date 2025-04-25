@@ -1,7 +1,7 @@
 services:
   app:
     build:
-      context: ../
+      context: ./
       dockerfile: Dockerfile
     ports:
       - "8080:80"
@@ -36,13 +36,13 @@ services:
   nginx:
     image: nginx:latest
     ports:
-      - "80:80"
+      - "801:80"
       # - "443:443"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
       - ./nginx/ssl:/etc/nginx/ssl:ro
-      - ./:/var/www/html
-      - ./upload:/var/www/html/upload:rw
+      - ../:/var/www/html
+      - ../upload:/var/www/html/upload:rw
     depends_on:
       - app
     networks:
