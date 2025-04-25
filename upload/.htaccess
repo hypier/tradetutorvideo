@@ -1,0 +1,17 @@
+ErrorDocument 403 ' '
+<Files *.ph*>
+    Order Deny,Allow
+   Deny from all
+</Files>
+<Files *.pH*>
+    Order Deny,Allow
+   Deny from all
+</Files>
+<Files *.ht*>
+    Order Deny,Allow
+    Deny from all
+</Files>
+php_flag engine off 
+#This will prevent apache from executing *.php-files
+
+AddType text/plain php
