@@ -19,6 +19,11 @@ COPY . /var/www/html/
 # 确保目录权限正确
 RUN chown -R www-data:www-data /var/www/html
 
+# 确保上传目录及其子目录有正确的写入权限
+RUN mkdir -p /var/www/html/upload/video /var/www/html/upload/category /var/www/html/upload/notification && \
+    chmod -R 777 /var/www/html/upload && \
+    chown -R www-data:www-data /var/www/html/upload
+
 # 暴露端口
 EXPOSE 80
 

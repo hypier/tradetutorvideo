@@ -9,6 +9,7 @@ services:
       - "8080:80"
     volumes:
       - ./:/var/www/html
+      - ./upload:/var/www/html/upload:rw
     depends_on:
       - db
     environment:
@@ -41,6 +42,7 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
       - ./nginx/ssl:/etc/nginx/ssl:ro
       - ./:/var/www/html
+      - ./upload:/var/www/html/upload:rw
     depends_on:
       - app
     networks:
