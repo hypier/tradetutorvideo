@@ -1,10 +1,10 @@
 <?php
     
     //database configuration
-    $host       = 'localhost';
-    $user       = 'root';
-    $pass       = '';
-    $database   = 'your_videos_channel_db';
+    $host       = getenv('MYSQL_HOST') ?: 'localhost';
+    $user       = getenv('MYSQL_USER') ?: 'root';
+    $pass       = getenv('MYSQL_PASSWORD') ?: '';
+    $database   = getenv('MYSQL_DATABASE') ?: 'your_videos_channel_db';
 
     $connect = new mysqli($host, $user, $pass, $database);
 
