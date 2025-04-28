@@ -107,7 +107,8 @@
                     'video_duration'    => clean($_POST['video_duration']),
                     'video_description' => $_POST['video_description'],
                     'video_type'        => clean($_POST['upload_type']),
-                    'size'              => $bytes
+                    'size'              => $bytes,
+                    'total_views'       => clean($_POST['total_views'])
                     );      
 
                       $qry = insert('tbl_gallery', $data);                                  
@@ -218,6 +219,13 @@
                                         <div class="font-12">Video Duration</div>
                                         <div class="form-line">
                                             <input type="text" name="video_duration" id="video_duration" class="form-control" placeholder="03:59" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="font-12">观看次数</div>
+                                        <div class="form-line">
+                                            <input type="number" name="total_views" id="total_views" class="form-control" placeholder="0" value="0" required>
                                         </div>
                                     </div>
 
