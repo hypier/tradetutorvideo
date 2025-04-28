@@ -36,7 +36,7 @@
 			}
 		}
 
-		$_SESSION['msg'] = "Video deleted successfully...";
+		$_SESSION['msg'] = "视频删除成功...";
 	    header( "Location: video.php");
 	     exit;
 	}

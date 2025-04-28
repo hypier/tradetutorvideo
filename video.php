@@ -27,14 +27,14 @@
                     		unlink('upload/' . $row['video_thumbnail']);
                     	}
                     }
-                    $_SESSION['msg'] = "$count Selected videos deleted";
+                    $_SESSION['msg'] = "已删除 $count 个所选视频";
                 } else {
-                    $_SESSION['msg'] = "Error deleting record";
+                    $_SESSION['msg'] = "删除记录时出错";
                 }
 
             }
         } else {
-            $_SESSION['msg'] = "Whoops! no videos selected to delete";
+            $_SESSION['msg'] = "哎呀！没有选择要删除的视频";
         }
         header("Location:video.php");
         exit;
@@ -64,7 +64,7 @@
 		$data = array('video_status' => '0');	
 		$update = update('tbl_gallery', $data, "WHERE id = '".$_GET['disable']."'");
 		if ($update > 0) {
-	        $_SESSION['msg'] = "Video successfully disabled";
+	        $_SESSION['msg'] = "视频已成功禁用";
 	        header('Location:video.php?page='.$_GET['page']);
 			exit;
 		}
@@ -74,7 +74,7 @@
 		$data = array('video_status' => '1');	
 		$update = update('tbl_gallery', $data, "WHERE id = '".$_GET['enable']."'");
 		if ($update > 0) {
-	        $_SESSION['msg'] = "Video successfully enabled";
+	        $_SESSION['msg'] = "视频已成功启用";
 	        header("Location:video.php?page=".$_GET['page']);
 			exit;
 		}
@@ -91,8 +91,8 @@
 <section class="content">
 
 	<ol class="breadcrumb">
-		<li><a href="dashboard.php">Dashboard</a></li>
-		<li class="active">Manage Video</a></li>
+		<li><a href="dashboard.php">控制面板</a></li>
+		<li class="active">视频管理</a></li>
 	</ol>
 
 	<div class="container-fluid">
@@ -101,9 +101,9 @@
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="card corner-radius">
 					<div class="header">
-						<h2>MANAGE VIDEO</h2>
+						<h2>视频管理</h2>
 						<div class="header-dropdown m-r--5">
-							<a href="video-add.php"><button type="button" class="button button-rounded btn-offset waves-effect waves-float">ADD NEW VIDEO</button></a>
+							<a href="video-add.php"><button type="button" class="button button-rounded btn-offset waves-effect waves-float">添加新视频</button></a>
 						</div>
 					</div>
 
@@ -122,25 +122,25 @@
 									<td>
 										<div class="form-group form-float">
 											<div class="form-line">
-												<input type="text" class="form-control" name="keyword" placeholder="Search..." required>
+												<input type="text" class="form-control" name="keyword" placeholder="搜索..." required>
 											</div>
 										</div>
 									</td>
-									<td width="1%"><a href="video.php"><button type="button" class="button button-rounded waves-effect waves-float">RESET</button></a></td>
+									<td width="1%"><a href="video.php"><button type="button" class="button button-rounded waves-effect waves-float">重置</button></a></td>
 									<td width="1%"><button type="submit" class="btn bg-blue btn-circle waves-effect waves-circle waves-float"><i class="material-icons">search</i></button></td>
 								</tr>
 							</table>
 						</form>
 
 						<?php if ($tcount == 0) { ?>
-							<p align="center" style="font-size: 110%;">There are no videos.</p>
+							<p align="center" style="font-size: 110%;">没有视频。</p>
 						<?php } else { ?>
 
 						<form method="post" action="">
 
 							<div style="margin-left: 8px; margin-top: -36px; margin-bottom: 10px;">
-								<button type="submit" name="submit" id="submit" class="button button-rounded waves-effect waves-float" onclick="return confirm('Are you sure want to delete all selected videos?')">Delete selected items(s)</button>&nbsp;&nbsp;
-								<a href="" data-toggle="modal" data-target="#modal-jump-to-page"><button type="button" class="button button-rounded waves-effect waves-float">Jump to Page</button></a>
+								<button type="submit" name="submit" id="submit" class="button button-rounded waves-effect waves-float" onclick="return confirm('确定要删除所有选中的视频吗？')">删除所选项目</button>&nbsp;&nbsp;
+								<a href="" data-toggle="modal" data-target="#modal-jump-to-page"><button type="button" class="button button-rounded waves-effect waves-float">跳转到页</button></a>
 							</div>				
 
 							<table class='table table-hover table-striped'>
@@ -152,12 +152,12 @@
 												<label for="chk_all"></label>
 											</div>
 										</th>
-										<th width="39%">Video Title</th>
-										<th width="10%">Image</th>
-										<th width="15%"><center>Category</center></th>
-										<th width="10%"><center>Type</center></th>
-										<th width="5%"><center>Views</center></th>
-										<th width="20%"><center>Action</center></th>
+										<th width="39%">视频标题</th>
+										<th width="10%">图片</th>
+										<th width="15%"><center>分类</center></th>
+										<th width="10%"><center>类型</center></th>
+										<th width="5%"><center>观看次数</center></th>
+										<th width="20%"><center>操作</center></th>
 									</tr>
 								</thead>
 								<?php
@@ -201,11 +201,11 @@
 												<?php if ($data['video_type'] == 'youtube') { ?>
 												<span class="label label-rounded bg-red">YOUTUBE</span>
 												<?php } else if ($data['video_type'] == 'Url') { ?>
-												<span class="label label-rounded bg-green">URL</span>
+												<span class="label label-rounded bg-green">网址</span>
 												<?php } else if ($data['video_type'] == 'Upload') { ?>
-												<span class="label label-rounded bg-grey">UPLOAD</span>
+												<span class="label label-rounded bg-grey">上传</span>
 												<?php } else { ?>
-												<span class="label label-rounded bg-black">UNKNOWN</span>
+												<span class="label label-rounded bg-black">未知</span>
 												<?php } ?>
 											</center>
 										</td>
@@ -215,11 +215,11 @@
 										<td style="vertical-align: middle;"><center>
 
 											<?php if ($data['video_status'] == '1') { ?>
-											<a href="video.php?page=<?php echo $page; ?>&disable=<?php echo $data['id'];?>" onclick="return confirm('Are you sure want to disable this video?')">
+											<a href="video.php?page=<?php echo $page; ?>&disable=<?php echo $data['id'];?>" onclick="return confirm('确定要禁用此视频吗？')">
 												<i class="material-icons">visibility</i>
 											</a>
 											<?php } else { ?>
-											<a href="video.php?page=<?php echo $page; ?>&enable=<?php echo $data['id'];?>" onclick="return confirm('Are you sure want to enable this video?')">
+											<a href="video.php?page=<?php echo $page; ?>&enable=<?php echo $data['id'];?>" onclick="return confirm('确定要启用此视频吗？')">
 												<i class="material-icons">visibility_off</i>
 											</a>
 											<?php } ?>
@@ -232,7 +232,7 @@
 												<i class="material-icons">mode_edit</i>
 											</a>
 
-											<a href="video-delete.php?id=<?php echo $data['id'];?>" onclick="return confirm('Are you sure want to delete this video?')" >
+											<a href="video-delete.php?id=<?php echo $data['id'];?>" onclick="return confirm('确定要删除此视频吗？')" >
 												<i class="material-icons">delete</i>
 											</a></center>
 										</td>
@@ -262,20 +262,20 @@
         <form method="post" id="form_validation">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="largeModalLabel">Jump to Page</h4>
+                    <h4 class="modal-title" id="largeModalLabel">跳转到页</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
                         <div class="form-line">
-                            <div class="font-12"><b>Input Page Number</b></div>
+                            <div class="font-12"><b>输入页码</b></div>
                             <input type="number" class="form-control" name="page_number" id="page_number" min="1" max="<?php echo $tpages; ?>" required>
                         </div>
-                        <div class="help-info pull-left">Page number between ( 1 - <?php echo $tpages; ?> )</div>
+                        <div class="help-info pull-left">页码范围 ( 1 - <?php echo $tpages; ?> )</div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CANCEL</button>
-                    <button type="submit" name="jump_to_page" class="btn btn-link waves-effect">GO</button>
+                    <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">取消</button>
+                    <button type="submit" name="jump_to_page" class="btn btn-link waves-effect">前往</button>
                 </div>
             </div>
         </form>

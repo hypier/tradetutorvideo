@@ -136,7 +136,7 @@
 			$update = update('tbl_gallery', $data, "WHERE id = '".$_POST['id']."'");
 
 			if ($update > 0) {
-			$_SESSION['msg'] = 'Changes saved...';
+			$_SESSION['msg'] = '更改已保存...';
 			header( "Location:video-edit.php?id=$ID");
 			exit;
 	}
@@ -205,9 +205,9 @@ $(document).ready(function(e) {
    <section class="content">
    
         <ol class="breadcrumb">
-            <li><a href="dashboard.php">Dashboard</a></li>
-            <li><a href="video.php">Manage Video</a></li>
-            <li class="active">Edit Video</a></li>
+            <li><a href="dashboard.php">控制面板</a></li>
+            <li><a href="video.php">视频管理</a></li>
+            <li class="active">编辑视频</a></li>
         </ol>
 
        <div class="container-fluid">
@@ -218,7 +218,7 @@ $(document).ready(function(e) {
                 	<form id="form_validation" method="post" enctype="multipart/form-data">
                     <div class="card">
                         <div class="header">
-                            <h2>EDIT VIDEO</h2>
+                            <h2>编辑视频</h2>
                         </div>
                         <div class="body">
 
@@ -234,14 +234,14 @@ $(document).ready(function(e) {
                                 <div class="col-sm-5">
 
                                     <div class="form-group">
-                                        <div class="font-12">Video Title</div>
+                                        <div class="font-12">视频标题</div>
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="video_title" id="video_title" placeholder="video_title Title" value="<?php echo $row['video_title'];?>" required>
+                                            <input type="text" class="form-control" name="video_title" id="video_title" placeholder="视频标题" value="<?php echo $row['video_title'];?>" required>
                                         </div>
                                     </div>
                                   	
                                     <div class="form-group">
-                                        <div class="font-12">Video Duration</div>
+                                        <div class="font-12">视频时长</div>
                                         <div class="form-line">
                                             <input type="text" name="video_duration" id="video_duration" class="form-control" placeholder="03:59" value="<?php echo $row['video_duration'];?>" required>
                                         </div>
@@ -255,7 +255,7 @@ $(document).ready(function(e) {
                                     </div>
 
                                     <div class="form-group">
-                                        <div class="font-12">Category</div>
+                                        <div class="font-12">分类</div>
                                         <select class="form-control show-tick" name="cat_id" id="cat_id">
                                            <?php 	
 												while($category_row = mysqli_fetch_array($category_results)) {
@@ -270,11 +270,11 @@ $(document).ready(function(e) {
                                     </div>
 
                                     <div class="form-group">
-                                        <div class="font-12">Video Type</div>
+                                        <div class="font-12">视频类型</div>
                                         <select class="form-control show-tick" name="upload_type" id="upload_type">
 										    <option <?php if($row['video_type'] == 'youtube'){echo 'selected';} ?> value="youtube">Youtube</option>
-										    <option <?php if($row['video_type'] == 'Url'){ echo 'selected';} ?> value="Url">Url</option>
-										    <option <?php if($row['video_type'] == 'Upload'){ echo 'selected';} ?> value="Upload">Upload</option>
+										    <option <?php if($row['video_type'] == 'Url'){ echo 'selected';} ?> value="Url">网址链接</option>
+										    <option <?php if($row['video_type'] == 'Upload'){ echo 'selected';} ?> value="Upload">上传视频</option>
                                         </select>
                                     </div>
                                     
@@ -286,15 +286,15 @@ $(document).ready(function(e) {
                                     		<input type="file" name="youtube_thumbnail" id="youtube_thumbnail" class="dropify-image" data-max-file-size="3M" data-allowed-file-extensions="jpg jpeg png gif" data-allowed-file-extensions="jpg jpeg png gif" data-default-file="https://img.youtube.com/vi/<?php echo $row['video_id'];?>/mqdefault.jpg" data-show-remove="false"/>
                                     		<?php } ?>
 
-                                    		<div class="help-info pull-left">If the thumbnail image is empty, it will take from the default thumbnail on YouTube</div><br>
+                                    		<div class="help-info pull-left">如果缩略图为空，将使用YouTube上的默认缩略图</div><br>
                                     	</div>
 
                                         <div class="form-group">
-                                            <div class="font-12">Youtube URL</div>
+                                            <div class="font-12">Youtube链接</div>
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="youtube" id="youtube" placeholder="https://www.youtube.com/watch?v=33F5DJw3aiU" value="<?php echo $row['video_url'];?>" required>
                                             </div>
-                                            <div class="font-12">thumbnail image will be taken from the default image on youtube.</div>
+                                            <div class="font-12">缩略图将从YouTube默认图像中获取。</div>
                                         </div>
                                     </div>
 
@@ -313,7 +313,7 @@ $(document).ready(function(e) {
                                             <input type="file" name="image" id="image" class="dropify-image" data-max-file-size="3M" data-allowed-file-extensions="jpg jpeg png gif" data-default-file="upload/<?php echo $row['video_thumbnail'];?>" data-show-remove="false"/>
                                         </div>
                                         <div class="form-group">
-                                            <div class="font-12">Video URL</div>
+                                            <div class="font-12">视频链接</div>
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="url_source" id="url_source" placeholder="http://www.xyz.com/news_title.mp4" value="<?php echo $row['video_url'];?>" required/>
                                             </div>
@@ -323,7 +323,7 @@ $(document).ready(function(e) {
                                 </div>
 
                                 <div class="col-sm-7">
-                                    <div class="font-12">Description</div>
+                                    <div class="font-12">描述</div>
                                     <div class="form-group" style="margin-top: 6px;">
                                         <textarea class="form-control" name="video_description" id="video_description" class="form-control" cols="60" rows="10" required><?php echo $row['video_description'];?></textarea>
                                         <?php if ($ENABLE_RTL_MODE == 'true') { ?>
@@ -343,7 +343,7 @@ $(document).ready(function(e) {
 									<input type="hidden" name="old_size" value="<?php echo $row['size'];?>">
 									<input type="hidden" name="id" value="<?php echo $row['id'];?>">
 
-                                    <button type="submit" name="submit" class="button button-rounded waves-effect waves-float pull-right">UPDATE</button>
+                                    <button type="submit" name="submit" class="button button-rounded waves-effect waves-float pull-right">更新</button>
                                     
                                 </div>
 

@@ -113,7 +113,7 @@
 
                       $qry = insert('tbl_gallery', $data);                                  
                       
-                      $_SESSION['msg'] = 'Video added successfully...';
+                      $_SESSION['msg'] = '视频添加成功...';
                       header( "Location:video-add.php");
                       exit;
 
@@ -180,9 +180,9 @@
 <section class="content">
 
 	<ol class="breadcrumb">
-		<li><a href="dashboard.php">Dashboard</a></li>
-		<li><a href="video.php">Manage Video</a></li>
-		<li class="active">Add Video</a></li>
+		<li><a href="dashboard.php">控制面板</a></li>
+		<li><a href="video.php">视频管理</a></li>
+		<li class="active">添加视频</a></li>
 	</ol>
 
 	<div class="container-fluid">
@@ -193,7 +193,7 @@
 				<form id="form_validation" method="post" enctype="multipart/form-data">
 					<div class="card corner-radius">
 						<div class="header">
-							<h2>ADD VIDEO</h2>
+							<h2>添加视频</h2>
 						</div>
 						<div class="body">
 
@@ -209,14 +209,14 @@
                                 <div class="col-sm-5">
 
                                     <div class="form-group">
-                                        <div class="font-12">Video Title</div>
+                                        <div class="font-12">视频标题</div>
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="video_title" id="video_title" placeholder="Video Title" required>
+                                            <input type="text" class="form-control" name="video_title" id="video_title" placeholder="视频标题" required>
                                         </div>
                                     </div>
                                   	
                                     <div class="form-group">
-                                        <div class="font-12">Video Duration</div>
+                                        <div class="font-12">视频时长</div>
                                         <div class="form-line">
                                             <input type="text" name="video_duration" id="video_duration" class="form-control" placeholder="03:59" required>
                                         </div>
@@ -230,7 +230,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <div class="font-12">Category</div>
+                                        <div class="font-12">分类</div>
                                         <select class="form-control show-tick" name="cat_id" id="cat_id">
                                             <?php while ($data = mysqli_fetch_array ($wall_result)) { ?>
                                             <option value="<?php echo $data['cid'];?>"><?php echo $data['category_name'];?></option>
@@ -239,27 +239,27 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <div class="font-12">Video Type</div>
+                                        <div class="font-12">视频类型</div>
                                         <select class="form-control show-tick" name="upload_type" id="upload_type">
                                                 <option value="youtube">Youtube</option>
-                                                <option value="Url">Url</option>
-                                                <option value="Upload">Upload</option>
+                                                <option value="Url">网址链接</option>
+                                                <option value="Upload">上传视频</option>
                                         </select>
                                     </div>
 
                                     <div id="youtube">
-                                        <div class="font-12 ex1">Optional YouTube Thumbnail ( jpg / png )</div>
+                                        <div class="font-12 ex1">可选的YouTube缩略图 ( jpg / png )</div>
                                         <div class="form-group">
                                             <input type="file" name="youtube_thumbnail" id="youtube_thumbnail" class="dropify-image" data-max-file-size="3M" data-allowed-file-extensions="jpg jpeg png gif"/>
-                                            <div class="help-info pull-left">If the thumbnail image is empty, it will take from the default thumbnail on YouTube</div><br>
+                                            <div class="help-info pull-left">如果缩略图为空，将使用YouTube上的默认缩略图</div><br>
                                         </div>
 
                                         <div class="form-group">
-                                            <div class="font-12">Youtube URL</div>
+                                            <div class="font-12">Youtube链接</div>
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="youtube" id="youtube" placeholder="https://www.youtube.com/watch?v=33F5DJw3aiU" required>
                                             </div>
-                                            <div class="font-12">thumbnail image will be taken from the default image on youtube.</div>
+                                            <div class="font-12">缩略图将从YouTube默认图像中获取。</div>
                                         </div>
                                     </div>
                                     
@@ -278,7 +278,7 @@
                                             <input type="file" name="image" id="image" class="dropify-image" data-max-file-size="3M" data-allowed-file-extensions="jpg jpeg png gif" />
                                         </div>
                                         <div class="form-group">
-                                            <div class="font-12">Video URL</div>
+                                            <div class="font-12">视频链接</div>
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="url_source" id="url_source" placeholder="http://www.xyz.com/news_title.mp4" required/>
                                             </div>
@@ -288,7 +288,7 @@
                                 </div>
 
                                 <div class="col-sm-7">
-                                    <div class="font-12">Description</div>
+                                    <div class="font-12">描述</div>
                                     <div class="form-group" style="margin-top: 6px;">
                                         <textarea class="form-control" name="video_description" id="video_description" class="form-control" cols="60" rows="10" required></textarea>
 
@@ -304,7 +304,7 @@
                                         <?php } ?>
                                     </div>
 
-                                    <button type="submit" name="submit" class="button button-rounded waves-effect waves-float pull-right">PUBLISH</button>
+                                    <button type="submit" name="submit" class="button button-rounded waves-effect waves-float pull-right">发布</button>
                                     
                                 </div>								
 
